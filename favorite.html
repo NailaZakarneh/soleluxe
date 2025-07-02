@@ -1,0 +1,29 @@
+<div id="favorites-container" class="row"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("favorites-container");
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+  if (favorites.length === 0) {
+    container.innerHTML = "<p>No favorite items yet.</p>";
+    return;
+  }
+
+  favorites.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "col-md-4 mb-3";
+
+    card.innerHTML = `
+      <div class="card">
+        <img src="${item.image}" class="card-img-top" alt="${item.name}">
+        <div class="card-body">
+          <h5 class="card-title">${item.name}</h5>
+          <p class="card-text">₪${item.price.toFixed(2)}</p>
+        </div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+});
+</script>

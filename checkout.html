@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout - SoleLuxe</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right,  #282827 , #bac790);
+      margin: 0;
+      padding: 0;
+    }
+
+    .checkout-container {
+      flex: 1;
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #f2f1b5;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .btn-submit {
+      background-color: #040405;
+      color: white;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 6px;
+    }
+
+    .success-message {
+      background-color: #f8f8f7;
+      color: #0e0f0b;
+      padding: 20px;
+      border: 1px solid #050503;
+      border-radius: 8px;
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+     <strong><a class="navbar-brand" href="index.html">SoleLuxe</a></strong> 
+    </div>
+  </nav>
+
+  <!-- Checkout Form -->
+  <div class="checkout-container">
+    <h2>Checkout</h2>
+    <form id="checkout-form">
+      <div class="mb-3">
+        <label for="name" class="form-label">Full Name</label>
+        <input type="text" id="name" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <textarea id="address" class="form-control" rows="3" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">Phone Number</label>
+        <input type="tel" id="phone" class="form-control" required>
+      </div>
+      <button type="submit" class="btn-submit">Submit Order</button>
+    </form>
+
+    <div id="success-message" class="success-message" style="display: none;  ">
+      ✅ Order sent successfully. We will contact you soon to deliver your order.
+    </div>
+  </div>
+
+  
+
+  <!-- Script -->
+  <script>
+    const form = document.getElementById("checkout-form");
+    const message = document.getElementById("success-message");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const address = document.getElementById("address").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+
+      if (!name || !address || !phone) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      // تحقق رقم الهاتف: أرقام فقط وطوله بين 7 و 15 رقم
+      const phoneRegex = /^[0-9]{7,15}$/;
+      if (!phoneRegex.test(phone)) {
+        alert("Please enter a valid phone number (only digits, 7 to 15 characters).");
+        return;
+      }
+
+      message.style.display = "block";
+      form.style.display = "none";
+
+      localStorage.removeItem("cart");
+
+      setTimeout(() => {
+        const secondMsg = document.createElement("div");
+        secondMsg.textContent = "🚚 Your order is being prepared, Thank you for shopping with SoleLuxe! We appreciate your trust and look forward to serving you again.❤️";
+        secondMsg.style.marginTop = "15px";
+        secondMsg.style.color = "#050503";
+        secondMsg.style.fontWeight = "bold";
+        message.appendChild(secondMsg);
+      }, 1000);
+    });
+  </script>
+  <script>window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  loader.classList.add("hidden");
+});
+</script>
+ <div id="footer-placeholder"></div>
+<script>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+</script>
+</body>
+</html>
+
+

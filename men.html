@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoleLuxe-Men's Shoes</title>
+<link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: white;
+    }
+    nav {
+      background-color: #000000 !important;
+    }
+    nav .navbar-brand,
+    nav .nav-link {
+      color: rgb(221, 208, 134) !important;
+      font-weight: 500;
+    }
+    nav .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+    .categories {
+      padding: 3rem 1rem;
+    }
+    .categories h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      font-weight: 700;
+      text-align: center;
+    }
+    .card {
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      overflow: hidden;
+      height: auto; /* مناسب لحجم الصورة + النص */
+      display: flex;
+       overflow: visible;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .carousel-inner img {
+      height: auto;
+      max-width: 100%;
+      object-fit: contain; /* يظهر الصورة كاملة بدون قص */
+    }
+    .card p {
+  margin: 0;
+  word-wrap: break-word; /* يضمن ان النص لا يخرج من حدود الكارد */
+}
+    .card-body {
+      padding: 1rem;
+    }
+    .card-body button {
+      margin: 0 5px;
+    }
+ 
+    .filter {
+      background-color: #f8f9fa;
+      padding: 2rem;
+      border-radius: 10px;
+    }
+    .filter h4 {
+      margin-bottom: 1rem;
+    }
+  .title {
+  display: flex;
+  align-items: center;          
+  justify-content: center;      
+  gap: 10px;                    
+  margin: 0 auto;  
+  margin-bottom: 50px;             
+  width: fit-content;          
+}
+
+.title h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.title .high-heel {
+  height: 50px;                 
+  width: auto;
+}
+  .equal-height {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .equal-height .card-body {
+    margin-top: auto;
+  }
+
+  .bestsellers .card {
+    min-height: 100%;
+  }
+
+
+  .carousel-inner img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+    .cart-count {
+      position: absolute;
+      top: -5px;
+      right: -10px;
+      background-color: rgb(227, 208, 36);
+      color: white;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .nav-item.position-relative {
+      position: relative;
+    }
+        /* loader.css */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+#loader.hidden {
+  display: none;
+}
+#loader .shoe-spin {
+  width: 100px;
+  height: 100px;
+  background-image: url('assets/fashion-min.png');
+  background-size: contain;
+  background-repeat:repeat;
+  background-position: center;
+  animation: spin 0.0001s  infinite;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+    
+  </style>
+</head>
+<body>
+  <body>
+  <div id="loader">
+  <div class="shoe-spin"></div>
+</div>
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">SoleLuxe</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto gap-3">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item position-relative">
+            <a class="nav-link" href="cart.html">
+              <i class="bi bi-cart-fill"></i>
+              <span id="cart-count" class="cart-count" style="display:none;">0</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="checkout.html">Checkout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid mt-5">
+    <div class="row">
+      <!-- Filter Sidebar -->
+      <div class="col-lg-3 mb-4">
+        <div class="filter">
+          <h4>Filter by</h4>
+          <div class="mb-3">
+            <label class="form-label">Price</label>
+            <select class="form-select">
+              <option value="">All</option>
+              <option value="₪1000 - ₪2000">₪1000 - ₪2000</option>
+              <option value="₪2000 - ₪3000">₪2000 - ₪3000</option>
+              <option value="₪3000 - ₪7500">₪3000 - ₪7500</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Color</label>
+            <select class="form-select">
+              <option value="">All</option>
+              <option value="black">Black</option>
+              <option value="white">White</option>
+              <option value="red">Red</option>
+              <option value="Brown">Brown</option>
+              <option value="Blue">Blue</option>
+              <option value="Gray">Gray</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Brand</label>
+            <select class="form-select">
+              <option value="">All</option>
+              <option value="CHRISTIAN LOUBOUTIN">CHRISTIAN LOUBOUTIN</option>
+              <option value="RENE` CAOVILLA">OFF-WHITE</option>
+              <option value="AMINA MUADDI">VALENTIONO GARAVANI</option>
+              <option value="TOM FORD">TOM FORD</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Cards -->
+      <div class="col-lg-9">
+        <section class="categories" id="categories">
+         <div class="title" > <h2>Men's Shoes</h2><img src="assets/fashion-min.png" class="high-heel"alt="high-heel"></div>
+          <div class="row g-4">
+
+           
+            <!-- Card 1 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel1" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/Chambeliss Derby Shoes in Calf Leather1-min.png" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Chambeliss Derby Shoes in Calf Leather2-min.png" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Chambeliss Derby Shoes in Calf Leather3-min.png" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel1" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel1" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">Chambeliss Derby Shoes in Calf Leather</h5>
+                  <p class="card-text">₪4,500</p>
+                     <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="Chambeliss Derby Shoes in Calf Leather"
+              data-price="4500"
+              data-image="assets/Chambeliss Derby Shoes in Calf Leather1-min.png"
+              data-id="product2">Add to Cart</button>
+                <button class="btn btn-outline-danger btn-sm heart-btn" data-id="50">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel2" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/Be Right Back Sneakers in Mesh & Rubberised Leather1-min.png" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Be Right Back Sneakers in Mesh & Rubberised Leather2-min.png" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Be Right Back Sneakers in Mesh & Rubberised Leather3-min.png" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel2" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel2" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">Be Right Back Sneakers in Mesh & Rubberised Leather</h5>
+                  <p class="card-text">₪2,100</p>
+                  <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="Be Right Back Sneakers in Mesh & Rubberised Leather"
+              data-price="2100"
+              data-image="assets/Be Right Back Sneakers in Mesh & Rubberised Leather1-min.png"
+              data-id="product2m">Add to Cart</button>
+                  <button class="btn btn-outline-danger btn-sm heart-btn" data-id="51">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+
+  
+
+
+            <!-- Card 3 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel3" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/Greggo Lace-up Shoes in Leather1_19_11zon.jpg" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Greggo Lace-up Shoes in Leather2_20_11zon.jpg" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Greggo Lace-up Shoes in Leather3_21_11zon.jpg" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel3" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel3" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">Greggo Lace-up Shoes in Leather</h5>
+                  <p class="card-text">₪4,000 </p>
+                   <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="Greggo Lace-up Shoes in Leather"
+              data-price="4000"
+              data-image="assets/Greggo Lace-up Shoes in Leather1_19_11zon.jpg"
+              data-id="product3m">Add to Cart</button>
+                 <button class="btn btn-outline-danger btn-sm heart-btn" data-id="52">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel4" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/Elkan Lace-up Shoes in Burnished Leather1-min.png" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Elkan Lace-up Shoes in Burnished Leather2-min.png" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Elkan Lace-up Shoes in Burnished Leather3-min.png" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel4" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel4" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">Elkan Lace-up Shoes in Burnished Leather</h5>
+                  <p class="card-text">₪7,050  </p>
+                   <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="Elkan Lace-up Shoes in Burnished Leather"
+              data-price="7,050"
+              data-image="assets/Elkan Lace-up Shoes in Burnished Leather1-min.png"
+              data-id="product4m">Add to Cart</button>
+                <button class="btn btn-outline-danger btn-sm heart-btn" data-id="53">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel5" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/Valentino Garavani Freedots Sneakers in Leather1_86_11zon.jpg" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Valentino Garavani Freedots Sneakers in Leather2_87_11zon.jpg" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Valentino Garavani Freedots Sneakers in Leather3_88_11zon.jpg" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel5" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel5" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">Valentino Garavani Freedots Sneakers in Leather</h5>
+                  <p class="card-text">₪3,550</p>
+                  <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="Valentino Garavani Freedots Sneakers in Leather"
+              data-price="3550"
+              data-image="assets/Valentino Garavani Freedots Sneakers in Leather1_86_11zon.jpg"
+              data-id="product4">Add to Cart</button>
+                  <button class="btn btn-outline-danger btn-sm heart-btn" data-id="54">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+
+   
+            <!-- Card 6 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel6" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/Out Of Office Basket Sneakers in Leather1_25_11zon.jpg" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Out Of Office Basket Sneakers in Leather2_26_11zon.jpg" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Out Of Office Basket Sneakers in Leather3_27_11zon.jpg" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel6" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel6" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">Out Of Office Basket Sneakers in Leather</h5>
+                  <p class="card-text">₪2,350</p>
+                    <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="Out Of Office Basket Sneakers in Leather"
+              data-price="2350"
+              data-image="assets/Out Of Office Basket Sneakers in Leather1_25_11zon.jpg"
+              data-id="product6m">Add to Cart</button>
+                 <button class="btn btn-outline-danger btn-sm heart-btn" data-id="55">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+       
+            <!-- Card 7 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel7" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/Warwick Low-top Sneakers in Suede1_7_11zon.jpg" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Warwick Low-top Sneakers in Suede2_8_11zon.jpg" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Warwick Low-top Sneakers in Suede3_9_11zon.jpg" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel7" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel7" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">Warwick Low-top Sneakers in Suede</h5>
+                  <p class="card-text">₪3,740</p>
+                   <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="Warwick Low-top Sneakers in Suede"
+              data-price="3740"
+              data-image="assets/Warwick Low-top Sneakers in Suede1_7_11zon.jpg"
+              data-id="product7m">Add to Cart</button>
+                 <button class="btn btn-outline-danger btn-sm heart-btn" data-id="56">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel16" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/Valentino Garavani Vlogo Easyjog Sneakers in Leather & Fabric_92_11zon.jpg" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Valentino Garavani Vlogo Easyjog Sneakers in Leather & Fabric1_93_11zon.jpg" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Valentino Garavani Vlogo Easyjog Sneakers in Leather & Fabric3_94_11zon.jpg" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel8" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel8" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">Valentino Garavani Vlogo Easyjog Sneakers in Leather & Fabric</h5>
+                  <p class="card-text">₪4,050</p>
+                    <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="Valentino Garavani Vlogo Easyjog Sneakers in Leather & Fabric"
+              data-price="4050"
+              data-image="assets/Valentino Garavani Vlogo Easyjog Sneakers in Leather & Fabric_92_11zon.jpg"
+              data-id="product8m">Add to Cart</button>
+                 <button class="btn btn-outline-danger btn-sm heart-btn" data-id="57">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+            
+            
+
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+ 
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+
+ function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+      const cartCountElement = document.getElementById("cart-count");
+      if (totalCount > 0) {
+        cartCountElement.textContent = totalCount;
+        cartCountElement.style.display = "inline-block";
+      } else {
+        cartCountElement.style.display = "none";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      updateCartCount();
+      document.querySelectorAll(".add-to-cart").forEach(button => {
+        button.addEventListener("click", function () {
+          const name = this.dataset.name;
+          const price = parseFloat(this.dataset.price.replace(",", ""));
+          const image = this.dataset.image;
+          const id = this.dataset.id;
+
+          let cart = JSON.parse(localStorage.getItem("cart")) || [];
+          const existingItem = cart.find(item => item.id === id);
+          if (existingItem) {
+            existingItem.qty += 1;
+          } else {
+            cart.push({ id, name, price, image, qty: 1 });
+          }
+
+          localStorage.setItem("cart", JSON.stringify(cart));
+          updateCartCount();
+          alert("✅ Item added to cart!");
+        });
+      });
+    });
+</script>
+<script>window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  loader.classList.add("hidden");
+});
+</script>
+<script src="loader.js"></script>
+<script src="favorite.js"></script>
+<div id="footer-placeholder"></div>
+
+<script>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+

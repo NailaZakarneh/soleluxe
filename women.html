@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SoleLuxe-Women's Shoes</title>
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: white;
+    }
+    nav {
+      background-color: #000000 !important;
+    }
+    nav .navbar-brand,
+    nav .nav-link {
+      color: rgb(221, 208, 134) !important;
+      font-weight: 500;
+    }
+    nav .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+    .categories {
+      padding: 3rem 1rem;
+    }
+    .categories h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      font-weight: 700;
+      text-align: center;
+    }
+    .card {
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      overflow: hidden;
+      height: auto; /* مناسب لحجم الصورة + النص */
+      display: flex;
+       overflow: visible;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .carousel-inner img {
+      height: auto;
+      max-width: 100%;
+      object-fit: contain; /* يظهر الصورة كاملة بدون قص */
+    }
+    .card p {
+  margin: 0;
+  word-wrap: break-word; /* يضمن ان النص لا يخرج من حدود الكارد */
+}
+    .card-body {
+      padding: 1rem;
+    }
+    .card-body button {
+      margin: 0 5px;
+    }
+   
+    .filter {
+      background-color: #f8f9fa;
+      padding: 2rem;
+      border-radius: 10px;
+    }
+    .filter h4 {
+      margin-bottom: 1rem;
+    }
+  .title {
+  display: flex;
+  align-items: center;          
+  justify-content: center;      
+  gap: 10px;                    
+  margin: 0 auto;  
+  margin-bottom: 50px;             
+  width: fit-content;          
+}
+
+.title h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.title .high-heel {
+  height: 24px;                 
+  width: auto;
+}
+ .equal-height {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .equal-height .card-body {
+    margin-top: auto;
+  }
+
+  .bestsellers .card {
+    min-height: 100%;
+  }
+
+
+  .carousel-inner img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  .cart-count {
+      position: absolute;
+      top: -5px;
+      right: -10px;
+      background-color: rgb(227, 208, 36);
+      color: white;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .nav-item.position-relative {
+      position: relative;
+    }
+    /* loader.css */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+#loader.hidden {
+  display: none;
+}
+#loader .shoe-spin {
+  width: 100px;
+  height: 100px;
+  background-image: url('assets/high-heel_22_11zon.jpg');
+  background-size: contain;
+  background-repeat:repeat;
+  background-position: center;
+  animation: spin 0.0001s  infinite;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+  /* إضافة انتقال سلس عند إظهار/إخفاء البطاقات */
+  .col-12.col-sm-6.col-md-4 {
+    transition: all 0.3s ease;
+  }
+
+
+    
+  </style>
+</head>
+<body>
+  <div id="loader">
+  <div class="shoe-spin"></div>
+</div>
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">SoleLuxe</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto gap-3">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item position-relative">
+            <a class="nav-link" href="cart.html">
+              <i class="bi bi-cart-fill"></i>
+              <span id="cart-count" class="cart-count" style="display:none;">0</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="checkout.html">Checkout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid mt-5">
+  <div class="row">
+   <!-- Filter Sidebar -->
+<div class="col-lg-3 mb-4">
+  <div class="filter">
+    <h4>Filter by</h4>
+
+    <div class="mb-3">
+      <label class="form-label">Price</label>
+      <select class="form-select" id="filter-price">
+        <option value="">All</option>
+        <option value="3000-4000">₪3,000 - ₪4,000</option>
+        <option value="4000-6000">₪4,000 - ₪6,000</option>
+        <option value="6000-7000">₪6,000 - ₪7,000</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Color</label>
+      <select class="form-select" id="filter-color">
+        <option value="">All</option>
+        <option value="black">Black</option>
+        <option value="white">White</option>
+        <option value="red">Red</option>
+        <option value="beige">Beige</option>
+        <option value="blue">Blue</option>
+        <option value="pink">Pink</option>
+        <option value="brown">Brown</option>
+        <option value="gold">Gold</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Brand</label>
+      <select class="form-select" id="filter-brand">
+        <option value="">All</option>
+        <option value="CHRISTIAN LOUBOUTIN">CHRISTIAN LOUBOUTIN</option>
+        <option value="RENE` CAOVILLA">RENE` CAOVILLA</option>
+        <option value="JIMMY CHOO">JIMMY CHOO</option>
+        <option value="AMINA MUADDI">AMINA MUADDI</option>
+        <option value="SAINT LAURENT">SAINT LAURENT</option>
+        <option value="AQUAZZURA">AQUAZZURA</option>
+        <option value="TOM FORD">TOM FORD</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+      <!-- Product Cards -->
+      <div class="col-lg-9">
+      <section class="categories" id="categories">
+        <div class="title">
+          <h2>Women's Shoes</h2>
+          <img src="assets/high-heel_22_11zon.jpg" class="high-heel" alt="high-heel">
+        </div>
+
+        <div class="row g-4">
+
+           
+            <!-- Card 1 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel1" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/Sacora 100 Pearl Satin Sandals1_50_11zon.jpg" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Sacora 100 Pearl Satin Sandals2_51_11zon.jpg" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Sacora 100 Pearl Satin Sandals3_52_11zon.jpg" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel1" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel1" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">Sacora 100 Pearl Satin Sandals</h5>
+                  <p class="card-text">₪7,250</p>
+                         <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="Sacora 100 Pearl Satin Sandals"
+              data-price="7250"
+              data-image="assets/Sacora 100 Pearl Satin Sandals1_50_11zon.jpg"
+              data-id="product1w">Add to Cart</button>
+                 <button class="btn btn-outline-danger btn-sm heart-btn" data-id="1">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel2" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/Rosie Crystal Bow Slingback Pumps in Satin1_47_11zon.jpg" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Rosie Crystal Bow Slingback Pumps in Satin2_48_11zon.jpg" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Rosie Crystal Bow Slingback Pumps in Satin3_49_11zon.jpg" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel2" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel2" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">Rosie Crystal Bow Slingback Pumps in Satin</h5>
+                  <p class="card-text">₪4,230</p>
+                       <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="Rosie Crystal Bow Slingback Pumps in Satin"
+              data-price="4230"
+              data-image="assets/Rosie Crystal Bow Slingback Pumps in Satin1_47_11zon.jpg"
+              data-id="product2w">Add to Cart</button>
+                 <button class="btn btn-outline-danger btn-sm heart-btn" data-id="2">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel3" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/Iriza 100 Pumps in Patent Leather1_29_11zon.jpg" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Iriza 100 Pumps in Patent Leather2_30_11zon.jpg" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Iriza 100 Pumps in Patent Leather3_31_11zon.jpg" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel3" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel3" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">Iriza 100 Pumps in Patent Leather</h5>
+                  <p class="card-text">₪3,150</p>
+                  <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="Iriza 100 Pumps in Patent Leather"
+              data-price="3150"
+              data-image="assets/Iriza 100 Pumps in Patent Leather1_29_11zon.jpg"
+              data-id="product3w">Add to Cart</button>
+                  <button class="btn btn-outline-danger btn-sm heart-btn" data-id="3">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel4" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/Cleo 105 Crystal-embellished Sandals in Leather1-min.png" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Cleo 105 Crystal-embellished Sandals in Leather2-min.png" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Cleo 105 Crystal-embellished Sandals in Leather3-min.png" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel4" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel4" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">Cleo 105 Crystal-embellished Sandals in Leather</h5>
+                  <p class="card-text">₪6,200</p>
+                  <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="Cleo 105 Crystal-embellished Sandals in Leather"
+              data-price="6200"
+              data-image="assets/Cleo 105 Crystal-embellished Sandals in Leather1-min.png"
+              data-id="product4w">Add to Cart</button>
+                 <button class="btn btn-outline-danger btn-sm heart-btn" data-id="4">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel5" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/Gigi 95 Slipper Mules in Satin1_15_11zon.jpg" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Gigi 95 Slipper Mules in Satin2_16_11zon.jpg" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Gigi 95 Slipper Mules in Satin3_17_11zon.jpg" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel5" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel5" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">Gigi 95 Slipper Mules in Satin</h5>
+                  <p class="card-text">₪4,230 </p>
+                  <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="Gigi 95 Slipper Mules in Satin"
+              data-price="4230"
+              data-image="assets/Gigi 95 Slipper Mules in Satin1_15_11zon.jpg"
+              data-id="product5w">Add to Cart</button>
+                  <button class="btn btn-outline-danger btn-sm heart-btn" data-id="5">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel6" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/Hot Chick Sling Pumps in Patent Leather1_23_11zon.jpg" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Hot Chick Sling Pumps in Patent Leather2_24_11zon.jpg" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Hot Chick Sling Pumps in Patent Leather3_25_11zon.jpg" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel6" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel6" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">Hot Chick Sling Pumps in Patent Leather</h5>
+                  <p class="card-text">₪3,400</p>
+                     <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="Hot Chick Sling Pumps in Patent Leather"
+              data-price="3400"
+              data-image="assets/Hot Chick Sling Pumps in Patent Leather1_23_11zon.jpg"
+              data-id="product6w">Add to Cart</button>
+                  <button class="btn btn-outline-danger btn-sm heart-btn" data-id="6">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel7" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/1998 Leo 100 Sandals in Leather-min.png" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/1998 Leo 100 Sandals in Leather 1.jpeg-min.png" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/1998 Leo 100 Sandals in Leather 3-min.png" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel7" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel7" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">1998 Leo 100 Sandals in Leather</h5>
+                  <p class="card-text">₪3,300</p>
+                   <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="1998 Leo 100 Sandals in Leather"
+              data-price="3300"
+              data-image="assets/1998 Leo 100 Sandals in Leather-min.png"
+              data-id="product7w">Add to Cart</button>
+                  <button class="btn btn-outline-danger btn-sm heart-btn" data-id="7">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+         
+            <!-- Card 8 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel8" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/Chandelier 105 Sandals in Satin1-min.png" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Chandelier 105 Sandals in Satin2-min.png" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Chandelier 105 Sandals in Satin3-min.png" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel8" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel8" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">Chandelier 105 Sandals in Satin</h5>
+                  <p class="card-text">₪6,980</p>
+                     <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="Chandelier 105 Sandals in Satin"
+              data-price="6980"
+              data-image="assets/Chandelier 105 Sandals in Satin1-min.png"
+              data-id="product6">Add to Cart</button>
+                  <button class="btn btn-outline-danger btn-sm heart-btn" data-id="8">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+            <!-- Card 9 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel9" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/Cinderella 80 Slingback Pumps in Satin1-min.png" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Cinderella 80 Slingback Pumps in Satin2-min.png" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Cinderella 80 Slingback Pumps in Satin3-min.png" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel9" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel9" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">Cinderella 80 Slingback Pumps in Satin</h5>
+                  <p class="card-text">₪4,186</p>
+                     <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="Cinderella 80 Slingback Pumps in Satin"
+              data-price="4186"
+              data-image="assets/Cinderella 80 Slingback Pumps in Satin1-min.png"
+              data-id="product9w">Add to Cart</button>
+                  <button class="btn btn-outline-danger btn-sm heart-btn" data-id="9">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+     
+           
+        
+            <!-- Card 10 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel10" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/Tequila 105 Sandals in Nappa Leather1_74_11zon.jpg" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Tequila 105 Sandals in Nappa Leather2_75_11zon.jpg" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Tequila 105 Sandals in Nappa Leather3_76_11zon.jpg" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel10" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel10" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">Tequila 105 Sandals in Nappa Leather</h5>
+                  <p class="card-text">₪5,490</p>
+                   <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="Tequila 105 Sandals in Nappa Leather"
+              data-price="5490"
+              data-image="assets/Tequila 105 Sandals in Nappa Leather1_74_11zon.jpg"
+              data-id="product10w">Add to Cart</button>
+                  <button class="btn btn-outline-danger btn-sm heart-btn" data-id="10">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+            <!-- Card 11 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel11" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/So Kate 120 Pumps in Patent-leather1_65_11zon.jpg" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/So Kate 120 Pumps in Patent-leather2_66_11zon.jpg" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/So Kate 120 Pumps in Patent-leather3_67_11zon.jpg" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel11" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel11" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">So Kate 120 Pumps in Patent-leather</h5>
+                  <p class="card-text">₪3,150</p>
+                   <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="So Kate 120 Pumps in Patent-leather"
+              data-price="3150"
+              data-image="assets/So Kate 120 Pumps in Patent-leather1_65_11zon.jpg"
+              data-id="product11w">Add to Cart</button>
+                  <button class="btn btn-outline-danger btn-sm heart-btn" data-id="11">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+         
+            <!-- Card 12 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel12" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/Naked 105 Padlock Sandals in Laminated Leather1_92_11zon.jpg" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Naked 105 Padlock Sandals in Laminated Leather2_93_11zon.jpg" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Naked 105 Padlock Sandals in Laminated Leather3_94_11zon.jpg" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel12" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel12" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">Naked 105 Padlock Sandals in Laminated Leather</h5>
+                  <p class="card-text">₪4,890</p>
+                     <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="Naked 105 Padlock Sandals in Laminated Leather"
+              data-price="4890"
+              data-image="assets/Naked 105 Padlock Sandals in Laminated Leather1_92_11zon.jpg"
+              data-id="product12w">Add to Cart</button>
+                  <button class="btn btn-outline-danger btn-sm heart-btn" data-id="12">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+   
+        
+            <!-- Card 13 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel13" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/Rosalie Strass 100 Sandals in Metallic Suede1_44_11zon.jpg" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Rosalie Strass 100 Sandals in Metallic Suede2_45_11zon.jpg" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Rosalie Strass 100 Sandals in Metallic Suede3_46_11zon.jpg" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel13" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel13" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">Rosalie Strass 100 Sandals in Metallic Suede</h5>
+                  <p class="card-text">₪5,300</p>
+                  <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="Rosalie Strass 100 Sandals in Metallic Suede"
+              data-price="5300"
+              data-image="assets/Rosalie Strass 100 Sandals in Metallic Suede1_44_11zon.jpg"
+              data-id="product13w">Add to Cart</button>
+                 <button class="btn btn-outline-danger btn-sm heart-btn" data-id="13">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+      
+             <!-- Card 14 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel14" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/Crystal 50 Hoop Slingback Pumps in Satin1-min.png" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Crystal 50 Hoop Slingback Pumps in Satin2-min.png" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Crystal 50 Hoop Slingback Pumps in Satin3-min.png" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel14" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel14" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">Crystal 50 Hoop Slingback Pumps in Satin</h5>
+                  <p class="card-text">₪4,570</p>
+                    <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="Crystal 50 Hoop Slingback Pumps in Satin"
+              data-price="4570"
+              data-image="assets/Crystal 50 Hoop Slingback Pumps in Satin1-min.png"
+              data-id="product14w">Add to Cart</button>
+                  <button class="btn btn-outline-danger btn-sm heart-btn" data-id="14">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+             <!-- Card 15 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel15" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/Camelia 90 Crystal Slingback Pumps in Satin1-min.png" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Camelia 90 Crystal Slingback Pumps in Satin2-min.png" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Camelia 90 Crystal Slingback Pumps in Satin3-min.png" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel15" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel15" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">Camelia 90 Crystal Slingback Pumps in Satin</h5>
+                  <p class="card-text">₪4,545</p>
+                        <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="Camelia 90 Crystal Slingback Pumps in Satin"
+              data-price="4545"
+              data-image="assets/Camelia 90 Crystal Slingback Pumps in Satin1-min.png"
+              data-id="product15w">Add to Cart</button>
+                 <button class="btn btn-outline-danger btn-sm heart-btn" data-id="15">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+        
+           
+           
+              <!-- Card 16 -->
+            <div class="col-12 col-sm-6 col-md-4">
+              <div class="card equal-height">
+                <div id="productCarousel16" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="assets/Opyum 110 Sandals in Patent Leather1_19_11zon.jpg" class="d-block w-100" alt="Image 1">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Opyum 110 Sandals in Patent Leather2_20_11zon.jpg" class="d-block w-100" alt="Image 2">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="assets/Opyum 110 Sandals in Patent Leather3_21_11zon.jpg" class="d-block w-100" alt="Image 3">
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel16" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#productCarousel16" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="card-title">Opyum 110 Pumps in Patent Leather</h5>
+                  <p class="card-text">₪5,900</p>
+                  <button class="btn btn-outline-dark btn-sm add-to-cart"
+              data-name="Opyum 110 Pumps in Patent Leather"
+              data-price="5900"
+              data-image="assets/Opyum 110 Sandals in Patent Leather1_19_11zon.jpg"
+              data-id="product16w">Add to Cart</button>
+                 <button class="btn btn-outline-danger btn-sm heart-btn" data-id="16">
+  <i class="bi bi-heart"></i>
+</button>
+
+                </div>
+              </div>
+            </div>
+      
+          </div>
+          
+        </section>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+      const cartCountElement = document.getElementById("cart-count");
+      if (totalCount > 0) {
+        cartCountElement.textContent = totalCount;
+        cartCountElement.style.display = "inline-block";
+      } else {
+        cartCountElement.style.display = "none";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      updateCartCount();
+      document.querySelectorAll(".add-to-cart").forEach(button => {
+        button.addEventListener("click", function () {
+          const name = this.dataset.name;
+          const price = parseFloat(this.dataset.price.replace(",", ""));
+          const image = this.dataset.image;
+          const id = this.dataset.id;
+
+          let cart = JSON.parse(localStorage.getItem("cart")) || [];
+          const existingItem = cart.find(item => item.id === id);
+          if (existingItem) {
+            existingItem.qty += 1;
+          } else {
+            cart.push({ id, name, price, image, qty: 1 });
+          }
+
+          localStorage.setItem("cart", JSON.stringify(cart));
+          updateCartCount();
+          alert("✅ Item added to cart!");
+        });
+      });
+    });
+</script>
+<script src="loader.js"></script>
+<script src="favorite.js"></script>
+<div id="footer-placeholder"></div>
+<div id="footer-placeholder"></div>
+<script>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const priceSelect = document.getElementById('filter-price');
+  const colorSelect = document.getElementById('filter-color');
+  const brandSelect = document.getElementById('filter-brand');
+
+ // خريطة تربط بين معرف المنتج ولونه
+  const colorMap = {
+    'product1w': 'white',
+    'product2w': 'brown',
+    'product3w': 'beige',
+    'product4w': 'pink',
+    'product5w': 'pink',
+    'product6w': 'black',
+    'product7w': 'black',
+    'product6': 'blue',
+    'product9w': 'gold',
+    'product10w': 'blue',
+    'product11w': 'black',
+    'product12w': 'gold',
+    'product13w': 'white',
+    'product14w': 'pink',
+    'product15w': 'red',
+    'product16w': 'black'
+  };
+
+  // خريطة تربط بين معرف المنتج والماركة
+  const brandMap = {
+    'product1w': 'JIMMY CHOO',
+    'product2w': 'AMINA MUADDI',
+    'product3w': 'CHRISTIAN LOUBOUTIN',
+    'product4w': 'RENE` CAOVILLA',
+    'product5w': 'AMINA MUADDI',
+    'product6w': 'CHRISTIAN LOUBOUTIN',
+    'product7w': 'JIMMY CHOO',
+    'product6': 'RENE` CAOVILLA',
+    'product9w': 'RENE` CAOVILLA',
+    'product10w': 'AQUAZZURA',
+    'product11w': 'CHRISTIAN LOUBOUTIN',
+    'product12w': 'TOM FORD',
+    'product13w': 'CHRISTIAN LOUBOUTIN',
+    'product14w': 'AQUAZZURA',
+    'product15w': 'AMINA MUADDI',
+    'product16w': 'SAINT LAURENT'
+  };
+
+  [priceSelect, colorSelect, brandSelect].forEach(sel =>
+    sel.addEventListener('change', filterProducts)
+  );
+
+  function filterProducts() {
+    // قراءة نطاق السعر
+    const [minPrice, maxPrice] = priceSelect.value
+      ? priceSelect.value.split('-').map(Number)
+      : [null, null];
+
+    // القيمة المختارة للون
+    const selectedColor = colorSelect.value.trim().toLowerCase();
+    // القيمة المختارة للماركة
+    const selectedBrand = brandSelect.value.trim().toUpperCase();
+
+    document.querySelectorAll('.col-12.col-sm-6.col-md-4').forEach(card => {
+      const addBtn = card.querySelector('.add-to-cart');
+      const id = addBtn?.dataset.id || '';
+      const price = addBtn ? Number(addBtn.dataset.price) : 0;
+      const color = colorMap[id] || '';
+      const brand = brandMap[id] || '';
+
+      const okPrice = (minPrice == null || maxPrice == null)
+        ? true
+        : (price >= minPrice && price <= maxPrice);
+      const okColor = !selectedColor || color === selectedColor;
+      const okBrand = !selectedBrand || brand === selectedBrand;
+
+      card.style.display = (okPrice && okColor && okBrand) ? '' : 'none';
+    });
+  }
+});
+</script>
+
+
+</body>
+</html>
+
+</body>
+</html>
+
+
+
+
+
+
