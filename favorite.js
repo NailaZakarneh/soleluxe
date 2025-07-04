@@ -1,4 +1,4 @@
-// favorite.js
+
 
 // جلب الحالات المحفوظة من localStorage أو إنشاء كائن جديد
 let favorites = JSON.parse(localStorage.getItem('favorites')) || {};
@@ -8,7 +8,7 @@ function updateHeartButtons() {
   document.querySelectorAll('.heart-btn').forEach(btn => {
     const id = btn.dataset.id;
     if (favorites[id]) {
-      btn.classList.add('btn-danger');  // لون أحمر
+      btn.classList.add('btn-danger');  
       btn.classList.remove('btn-outline-danger'); // إزالة اللون الأبيض
       btn.querySelector('i').classList.remove('bi-heart');
       btn.querySelector('i').classList.add('bi-heart-fill');
@@ -40,7 +40,7 @@ function setupHeartButtons() {
   });
 }
 
-// استدعاء التهيئة والتحديث بعد تحميل الصفحة
+
 document.addEventListener("DOMContentLoaded", () => {
   setupHeartButtons();
   updateHeartButtons();
@@ -61,7 +61,7 @@ function toggleFavorite(el) {
     favorites.push({ id, name, price, image });
     el.classList.add("favorited");
   } else {
-    // أزل من المفضلة
+    // أزالة من المفضلة
     favorites.splice(index, 1);
     el.classList.remove("favorited");
   }

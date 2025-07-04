@@ -38,7 +38,7 @@
       border-radius: 10px;
       border: 1px solid #ccc;
       overflow: hidden;
-      height: auto; /* مناسب لحجم الصورة + النص */
+      height: auto;
       display: flex;
        overflow: visible;
       flex-direction: column;
@@ -47,11 +47,11 @@
     .carousel-inner img {
       height: auto;
       max-width: 100%;
-      object-fit: contain; /* يظهر الصورة كاملة بدون قص */
+      object-fit: contain; 
     }
     .card p {
   margin: 0;
-  word-wrap: break-word; /* يضمن ان النص لا يخرج من حدود الكارد */
+  word-wrap: break-word; 
 }
     .card-body {
       padding: 1rem;
@@ -121,7 +121,7 @@
     .nav-item.position-relative {
       position: relative;
     }
-    /* loader.css */
+  
 #loader {
   position: fixed;
   top: 0;
@@ -151,7 +151,7 @@
   to { transform: rotate(360deg); }
 }
 
-  /* إضافة انتقال سلس عند إظهار/إخفاء البطاقات */
+  
   .col-12.col-sm-6.col-md-4 {
     transition: all 0.3s ease;
   }
@@ -237,10 +237,6 @@
     </div>
   </div>
 </div>
-
-
-
-
 
 
       <!-- Product Cards -->
@@ -926,7 +922,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const colorSelect = document.getElementById('filter-color');
   const brandSelect = document.getElementById('filter-brand');
 
- // خريطة تربط بين معرف المنتج ولونه
   const colorMap = {
     'product1w': 'white',
     'product2w': 'brown',
@@ -946,7 +941,7 @@ document.addEventListener('DOMContentLoaded', function() {
     'product16w': 'black'
   };
 
-  // خريطة تربط بين معرف المنتج والماركة
+ 
   const brandMap = {
     'product1w': 'JIMMY CHOO',
     'product2w': 'AMINA MUADDI',
@@ -971,14 +966,14 @@ document.addEventListener('DOMContentLoaded', function() {
   );
 
   function filterProducts() {
-    // قراءة نطاق السعر
+    
     const [minPrice, maxPrice] = priceSelect.value
       ? priceSelect.value.split('-').map(Number)
       : [null, null];
 
-    // القيمة المختارة للون
+    
     const selectedColor = colorSelect.value.trim().toLowerCase();
-    // القيمة المختارة للماركة
+    
     const selectedBrand = brandSelect.value.trim().toUpperCase();
 
     document.querySelectorAll('.col-12.col-sm-6.col-md-4').forEach(card => {
