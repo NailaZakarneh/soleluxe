@@ -1,2 +1,2 @@
-soleluxe a step into luxury this website is created to sell fancy and luxury shoe brands for each women,men and kids 
-the design of it is simple and elegant and easy to use.
+SoleLuxe is a modern, fully responsive e-commerce platform built to showcase and sell luxury footwear for women, men, and children. Leveraging HTML5, CSS3 (with Bootstrap) and vanilla JavaScript, it delivers seamless user interactions—dynamic “add to cart” updates via LocalStorage, interactive product carousels, and real-time filtering by price, color, and brand. A streamlined login/logout flow personalizes each visit, while clean, mobile-first layouts ensure a consistent shopping experience across all devices. With its focus on elegance and performance, SoleLuxe makes premium shoe shopping both simple and sophisticated.
+
