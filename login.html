@@ -57,49 +57,82 @@
       <button type="submit" class="btn btn-dark w-100">Login</button>
     </form>
   </div>
+  
 
-  <script>
-    // لحتى يعبي البيانات الموجودة
-    window.addEventListener('DOMContentLoaded', () => {
-      if (localStorage.getItem('rememberMe') === 'true') {
-        document.getElementById('username').value = localStorage.getItem('username') || '';
-        document.getElementById('contact').value = localStorage.getItem('contact') || '';
-        document.getElementById('rememberMe').checked = true;
-      }
-    });
+ <!-- إضافة مكتبة SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    // تسجيل الدخول
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const username = document.getElementById('username').value.trim();
-      const contact = document.getElementById('contact').value.trim();
-      const password = document.getElementById('password').value.trim();
-      const remember = document.getElementById('rememberMe').checked;
+<script>
+  // لملء الحقول إذا كان Remember Me مفعل
+  window.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('rememberMe') === 'true') {
+      document.getElementById('username').value = localStorage.getItem('username') || '';
+      document.getElementById('contact').value  = localStorage.getItem('contact')  || '';
+      document.getElementById('rememberMe').checked = true;
+    }
+  });
 
-      if (username && contact && password) {
-        if (remember) {
-          localStorage.setItem('username', username);
-          localStorage.setItem('contact', contact);
-          localStorage.setItem('rememberMe', 'true');
-        } else {
-          localStorage.setItem('username', username);
-          localStorage.removeItem('contact');
-          localStorage.setItem('rememberMe', 'false');
-        }
-        alert(`Welcome, ${username}!`);
-        window.location.href = 'index.html';
+  // التعامل مع إرسال النموذج
+  document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const username = document.getElementById('username').value.trim();
+    const contact  = document.getElementById('contact').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const remember = document.getElementById('rememberMe').checked;
+
+    if (username && contact && password) {
+      // حفظ البيانات في localStorage
+      localStorage.setItem('username', username);
+      if (remember) {
+        localStorage.setItem('contact', contact);
+        localStorage.setItem('rememberMe', 'true');
       } else {
-        alert('Please fill in all fields.');
+        localStorage.removeItem('contact');
+        localStorage.setItem('rememberMe', 'false');
       }
-    });
-    
-  </script>
-  <div id="footer-placeholder"></div>
+
+      // إظهار Toast ترحيبي
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'success',
+        title: `👋 مرحباً يا ${username}!`,
+        showConfirmButton: false,
+        timer: 2000,
+        background: '#000',
+        color: '#e5de9d',
+        timerProgressBar: true
+      });
+
+      // بعد انتهاء التوست ننتقل للصفحة الرئيسية
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 2000);
+
+    } else {
+      // إظهار Toast خطأ عند وجود حقول فارغة
+      Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'error',
+        title: '❗ الرجاء تعبئة جميع الحقول.',
+        showConfirmButton: false,
+        timer: 2000,
+        background: '#000',
+        color: '#e5de9d',
+        timerProgressBar: true
+      });
+    }
+  });
+</script>
+
+<div id="footer-placeholder"></div>
 <script>
   fetch("footer.html")
     .then(response => response.text())
     .then(data => document.getElementById("footer-placeholder").innerHTML = data);
 </script>
+
 
 
 </body>

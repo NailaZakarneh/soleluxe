@@ -869,53 +869,81 @@
 
 
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    function updateCartCount() {
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
-      const cartCountElement = document.getElementById("cart-count");
-      if (totalCount > 0) {
-        cartCountElement.textContent = totalCount;
-        cartCountElement.style.display = "inline-block";
-      } else {
-        cartCountElement.style.display = "none";
-      }
+ <!-- مكتبات SweetAlert2 و Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // دالة توست الإضافة
+  function showAddToCartToast() {
+    Swal.fire({
+      toast: true,
+      position: 'bottom-end',
+      icon: 'success',
+      title: '✅ تم إضافة المنتج إلى السلة!',
+      showConfirmButton: false,
+      timer: 2000,
+      background: '#000',
+      color: '#e5de9d',
+      timerProgressBar: true
+    });
+  }
+
+  // تحديث عداد السلة
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+    const cartCountElement = document.getElementById("cart-count");
+    if (totalCount > 0) {
+      cartCountElement.textContent = totalCount;
+      cartCountElement.style.display = "inline-block";
+    } else {
+      cartCountElement.style.display = "none";
     }
+  }
 
-    document.addEventListener("DOMContentLoaded", function () {
-      updateCartCount();
-      document.querySelectorAll(".add-to-cart").forEach(button => {
-        button.addEventListener("click", function () {
-          const name = this.dataset.name;
-          const price = parseFloat(this.dataset.price.replace(",", ""));
-          const image = this.dataset.image;
-          const id = this.dataset.id;
+  document.addEventListener("DOMContentLoaded", function () {
+    // أولًا حدّث العداد
+    updateCartCount();
 
-          let cart = JSON.parse(localStorage.getItem("cart")) || [];
-          const existingItem = cart.find(item => item.id === id);
-          if (existingItem) {
-            existingItem.qty += 1;
-          } else {
-            cart.push({ id, name, price, image, qty: 1 });
-          }
+    // ربط كل زر إضافة للسلة
+    document.querySelectorAll(".add-to-cart").forEach(button => {
+      button.addEventListener("click", function () {
+        const name  = this.dataset.name;
+        const price = parseFloat(this.dataset.price.replace(",", ""));
+        const image = this.dataset.image;
+        const id    = this.dataset.id;
 
-          localStorage.setItem("cart", JSON.stringify(cart));
-          updateCartCount();
-          alert("✅ Item added to cart!");
-        });
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const existingItem = cart.find(item => item.id === id);
+        if (existingItem) {
+          existingItem.qty += 1;
+        } else {
+          cart.push({ id, name, price, image, qty: 1 });
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        // حدّث العداد واطبع التوست
+        updateCartCount();
+        showAddToCartToast();
       });
     });
+  });
 </script>
+
+<!-- سكربتات إضافية -->
 <script src="loader.js"></script>
 <script src="favorite.js"></script>
-<div id="footer-placeholder"></div>
+
+<!--Footer placeholder-->
 <div id="footer-placeholder"></div>
 <script>
   fetch("footer.html")
-    .then(response => response.text())
-    .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+    .then(res => res.text())
+    .then(html => document.getElementById("footer-placeholder").innerHTML = html);
 </script>
+
+<!-- فلترة المنتجات -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const priceSelect = document.getElementById('filter-price');
@@ -923,69 +951,41 @@ document.addEventListener('DOMContentLoaded', function() {
   const brandSelect = document.getElementById('filter-brand');
 
   const colorMap = {
-    'product1w': 'white',
-    'product2w': 'brown',
-    'product3w': 'beige',
-    'product4w': 'pink',
-    'product5w': 'pink',
-    'product6w': 'black',
-    'product7w': 'black',
-    'product6': 'blue',
-    'product9w': 'gold',
-    'product10w': 'blue',
-    'product11w': 'black',
-    'product12w': 'gold',
-    'product13w': 'white',
-    'product14w': 'pink',
-    'product15w': 'red',
-    'product16w': 'black'
+    product1w: 'white', product2w: 'brown', product3w: 'beige', product4w: 'pink',
+    product5w: 'pink', product6w: 'black', product7w: 'black', product6: 'blue',
+    product9w: 'gold', product10w: 'blue', product11w: 'black', product12w: 'gold',
+    product13w: 'white', product14w: 'pink', product15w: 'red', product16w: 'black'
   };
-
- 
   const brandMap = {
-    'product1w': 'JIMMY CHOO',
-    'product2w': 'AMINA MUADDI',
-    'product3w': 'CHRISTIAN LOUBOUTIN',
-    'product4w': 'RENE` CAOVILLA',
-    'product5w': 'AMINA MUADDI',
-    'product6w': 'CHRISTIAN LOUBOUTIN',
-    'product7w': 'JIMMY CHOO',
-    'product6': 'RENE` CAOVILLA',
-    'product9w': 'RENE` CAOVILLA',
-    'product10w': 'AQUAZZURA',
-    'product11w': 'CHRISTIAN LOUBOUTIN',
-    'product12w': 'TOM FORD',
-    'product13w': 'CHRISTIAN LOUBOUTIN',
-    'product14w': 'AQUAZZURA',
-    'product15w': 'AMINA MUADDI',
-    'product16w': 'SAINT LAURENT'
+    product1w: 'JIMMY CHOO', product2w: 'AMINA MUADDI', product3w: 'CHRISTIAN LOUBOUTIN',
+    product4w: 'RENE` CAOVILLA', product5w: 'AMINA MUADDI', product6w: 'CHRISTIAN LOUBOUTIN',
+    product7w: 'JIMMY CHOO', product6: 'RENE` CAOVILLA', product9w: 'RENE` CAOVILLA',
+    product10w: 'AQUAZZURA', product11w: 'CHRISTIAN LOUBOUTIN', product12w: 'TOM FORD',
+    product13w: 'CHRISTIAN LOUBOUTIN', product14w: 'AQUAZZURA', product15w: 'AMINA MUADDI',
+    product16w: 'SAINT LAURENT'
   };
 
-  [priceSelect, colorSelect, brandSelect].forEach(sel =>
-    sel.addEventListener('change', filterProducts)
+  // شغّل الفلترة عند تغيير أي قائمة
+  [priceSelect, colorSelect, brandSelect].forEach(el =>
+    el.addEventListener('change', filterProducts)
   );
 
   function filterProducts() {
-    
     const [minPrice, maxPrice] = priceSelect.value
       ? priceSelect.value.split('-').map(Number)
       : [null, null];
-
-    
     const selectedColor = colorSelect.value.trim().toLowerCase();
-    
     const selectedBrand = brandSelect.value.trim().toUpperCase();
 
     document.querySelectorAll('.col-12.col-sm-6.col-md-4').forEach(card => {
-      const addBtn = card.querySelector('.add-to-cart');
-      const id = addBtn?.dataset.id || '';
-      const price = addBtn ? Number(addBtn.dataset.price) : 0;
+      const btn = card.querySelector('.add-to-cart');
+      const id    = btn?.dataset.id || '';
+      const price = btn ? Number(btn.dataset.price) : 0;
       const color = colorMap[id] || '';
       const brand = brandMap[id] || '';
 
-      const okPrice = (minPrice == null || maxPrice == null)
-        ? true
-        : (price >= minPrice && price <= maxPrice);
+      const okPrice = (minPrice == null && maxPrice == null) ||
+                      (price >= minPrice && price <= maxPrice);
       const okColor = !selectedColor || color === selectedColor;
       const okBrand = !selectedBrand || brand === selectedBrand;
 
@@ -994,6 +994,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
+
 
 
 </body>
